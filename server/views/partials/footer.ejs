@@ -20,7 +20,22 @@
 <% } else { %>
   <footer class="bg-dark py-5 card-footer">
       <div class="container">
-          <div class="small text-center text-muted">Copyright © 2020 - CharonTech Incorporated</div>
+        <div class="row h-100 align-items-center justify-content-center">
+            <div class="col text-center">
+                <div class="small text-center text-muted">Copyright © 2020 - CharonTech Incorporated</div>
+            </div>
+            <div class="col text-muted text-center">
+                <ul style="color: white;">
+                    <li ><a href="/tournaments/create" class="bouncer">Create a tournament </a> </li>
+                    <li><a href="/tournaments"  class="bouncer">Your tournaments</a> </li>
+                    <li><a href="/login" class="bouncer">Sign-in </a> </li>
+                </ul>
+            </div>
+            <div class="col text-center">
+                <a href="/"><img src="/assets/images/logo.png" class="rounded" alt="Logo" width="100"> </a>
+            </div>
+         </div>
       </div>
+      
   </footer>
 <% } %>
