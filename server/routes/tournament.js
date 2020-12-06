@@ -2,7 +2,7 @@ const router = require("express").Router();
 const tournamentController = require('../controllers/tournament');
 const bracketController = require('../controllers/bracket');
 const Tournament = require('../models/tournament');
-
+const moment = require('moment');
 // helper function for guard purposes
 function requireAuth(req, res, next)
 {
@@ -27,8 +27,8 @@ router.post("/create", requireAuth, (req, res) => {
         title: req.body.title,
         game: req.body.game,
         owner: req.user,
-        beginsAt: req.body.beginsAt,
-        endsAt: req.body.endsAt,
+        beginsAt: moment(req.body.beginsAt).toDate(),
+        endsAt: moment(req.body.endsAt).toDate(),
         teams: participants,
         isActive: req.body.active == "on" ? true : false
     }, (err, tournament) => {
@@ -54,8 +54,8 @@ router.post('/edit/:id', (req, res, next) => {
         title: req.body.title,
         game: req.body.game,
         owner: req.user,
-        beginsAt: req.body.beginsAt,
-        endsAt: req.body.endsAt,
+        beginsAt: moment(req.body.beginsAt).toDate(),
+        endsAt: moment(req.body.endsAt).toDate(),
         teams: teams,
         isActive: req.body.active == "on" ? true : false
     }, (err, tournament) => {
