@@ -7,10 +7,15 @@ const indexController = require('../controllers/index');
 /* GET request for Home Page */
 router.get("/", indexController.displayHomePage);
 
+// /* GET contact us page. */
+// router.get('/contact', function(req, res, next) {
+//     res.render('contact', { title: 'Contact us'});
+//   });
+
 /* GET contact us page. */
 router.get('/contact', function(req, res, next) {
-    res.render('contact', { title: 'Contact us'});
-  });
+  res.render('contact1', { title: 'Contact us'});
+});
 
 /* GET request for Register Page */
 router.get("/register", indexController.displayRegisterPage);

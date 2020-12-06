@@ -98,7 +98,8 @@ router.get('/view/:id', (req, res, next) => {
                 Tournament: Tournament,
                 firstName: req.user ? req.user.firstName : "",
                 currentUser: req.user,
-                additionalScripts: '../tournament/partials/bracketModalScript'
+                additionalScripts: '../tournament/partials/bracketModalScript',
+                tournId: id
             });
         }
     });

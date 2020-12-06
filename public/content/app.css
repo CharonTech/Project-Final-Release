@@ -39,6 +39,38 @@ a:hover {
   height: 25px;
 }
 
+.bouncer1:before {
+	content:'';
+	position: absolute;
+	top: 25px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 5px;
+	transition: all 1s ease;
+}
+
+.bouncer1:hover:before{
+  height: 25px;
+}
+
+.bouncer2:before {
+	content:'';
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 5px;
+	transition: all 1s ease;
+}
+
+.bouncer2:hover:before{
+  height: 25px;
+}
+
 /* Shrink buttons */
 .shrink:hover
 {
