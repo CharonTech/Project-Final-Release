@@ -3,16 +3,16 @@
     
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3>All Tournaments</h3>
-
-          <!-- Add button -->
-          <% if(typeof firstName == "string" && firstName) {%>
-          <a href="/tournaments/create" class="btn btn-primary"><i class="fa fa-plus"></i> Add a tournament</a><br>
-          <% } %>
-          
-          <br>
+          <div class="deconstructed mb-4">
+            Tournaments
+            <div>Tournaments</div>
+            <div>Tournaments</div>
+            <div>Tournaments</div>
+            <div>Tournaments</div>
+          </div>
+         
           <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover table-lg">
+            <table class="table table-bordered table-striped table-hover ">
               <thead>
                 
                 <tr>
@@ -32,8 +32,8 @@
                 <% for (let count = 0; count < tournaments.length; count++) { %>
                 <% if(currentUser._id.equals(tournaments[count].owner)) {%>
                 <tr>
-                  <td><%= tournaments[count].title %></td>
-                  <td class="text-center"><%= tournaments[count].game %></td>
+                  <td><i class="fas fa-tags"></i> <%= tournaments[count].title %></td>
+                  <td class="text-center"> <i class="fas fa-gamepad"></i> <%= tournaments[count].game %></td>
                   <td class="text-center"><%=  moment(tournaments[count].beginsAt).format("MMM DD, YYYY") %></td>
                   <td class="text-center"><%= moment(tournaments[count].endsAt).format("MMM DD, YYYY") %></td>
                   <% if(typeof firstName == "string" && firstName) {%>
@@ -55,6 +55,11 @@
                 <% } %>
               </tbody>
             </table>
+            <br>
+             <!-- Add button -->
+          <% if(typeof firstName == "string" && firstName) {%>
+            <a href="/tournaments/create" class="btn btn-info"><i class="fa fa-plus"></i> Add a tournament</a><br>
+            <% } %>
           </div>
            <div class="col-md-offset-1 col-md-10 text-center">
             <ul class="pagination pagination-lg pager" id="myPager"></ul>

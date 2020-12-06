@@ -7,7 +7,7 @@
     {
         window.addEventListener('scroll', () => {
         if (document.body.scrollTop > styledForm.scrollTop || document.documentElement.scrollTop > styledForm.scrollTop) {
-            mainNav.style.backgroundColor = `rgba(220, 130, 91, 0.9)`;
+            mainNav.style.backgroundColor = `rgba(255, 45, 126, 0.7)`;
         }
         else
         {
@@ -19,7 +19,7 @@
     {
         window.addEventListener('scroll', () => {
             if (document.body.scrollTop > tournaments.scrollTop || document.documentElement.scrollTop > tournaments.scrollTop) {
-                mainNav.style.backgroundColor = `rgba(220, 130, 91, 0.9)`;
+                mainNav.style.backgroundColor = `rgba(255, 45, 126, 0.7)`;
             }
             else
             {
@@ -48,6 +48,7 @@
                 }
             });
         }
+
     }
     
     window.addEventListener("load", Start);

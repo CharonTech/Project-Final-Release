@@ -80,7 +80,14 @@
     <!-- Tournaments  -->
     <section class="page-section" id="tournaments">
         <div class="container">
-        <h1 class="display-7">Tournaments</h1>
+            <div class="deconstructed mb-4">
+                Tournaments
+                <div>Tournaments</div>
+                <div>Tournaments</div>
+                <div>Tournaments</div>
+                <div>Tournaments</div>
+              </div>
+        <!-- <h1 class="display-7">Tournaments</h1> -->
             <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
               <thead>
@@ -96,8 +103,8 @@
                 <!-- Template Row -->
                 <% for (let count = 0; count < tournaments.length; count++) { %>
                 <tr>
-                  <td><%= tournaments[count].title %></td>
-                  <td class="text-center"><%= tournaments[count].game %></td>
+                  <td><i class="fas fa-tags"></i> <%= tournaments[count].title %></td>
+                  <td class="text-center"> <i class="fas fa-gamepad"></i> <%= tournaments[count].game %></td>
                   <td class="text-center"><%= moment(tournaments[count].endsAt).format("MMM DD, YYYY") %></td>
                   <td class="text-center">
                     <a class="btn btn-sm btn-success" href="tournaments/view/<%= tournaments[count]._id %>">
@@ -135,7 +142,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="mt-0">Contact Us!</h2>
+                    <div class="deconstructed mb-4">
+                        Contact Us!
+                        <div>Contact Us!</div>
+                        <div>Contact Us!</div>
+                        <div>Contact Us!</div>
+                        <div>Contact Us!</div>
+                      </div>
                     <hr class="divider my-4" />
                     <p class="text-muted mb-5">For any suggestions or concerns, feel free to contact us
                     </p>
