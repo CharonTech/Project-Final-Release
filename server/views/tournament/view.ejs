@@ -22,7 +22,7 @@
 
   <div class="mb-4 no-print">
     <button type="button" class="btn btn-info d-block mx-auto" onclick="window.print()">Save as PDF</button>
-    <a href="https://restpack.io/html2pdf/save-as-pdf?url=https://testprojectcomp229.herokuapp.com//tournaments/view/<%= tournId %>" rel="nofollow" target="_blank">Download Invoce</a>
+    <a href="https://restpack.io/html2pdf/save-as-pdf?private=true?pdf_orientation=landscape?pdf_page=Letter?url=http://localhost:3000/tournaments/view/<%= tournId %>" rel="nofollow" target="_blank">Download Invoce</a>
   </div>
 </div>
 
@@ -62,3 +62,4 @@
   </div>
   <div class="push"></div>
 </div>
+<script async src="https://restpack.io/save-as-pdf.js"></script>
