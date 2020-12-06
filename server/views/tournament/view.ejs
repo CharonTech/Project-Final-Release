@@ -63,3 +63,11 @@
   <div class="push"></div>
 </div>
 <script async src="https://restpack.io/save-as-pdf.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
+<script>
+  const doc = new jsPDF();
+doc.text("Hello world!", 10, 10);
+doc.save("a4.pdf"); 
+</script>

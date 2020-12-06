@@ -6,6 +6,8 @@ let flash = require('connect-flash');
 
 require('dotenv').config();
 
+const { jsPDF } = require("jspdf");
+
 // Body parsers
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,11 +25,15 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
+  const doc = new jsPDF();
+  doc.text("Hello world!", 10, 10);
+  doc.save("a4.pdf"); 
 
 // Declaring static paths
 app.use(express.static("public"));
 app.use("/js", express.static(__dirname + "/node_modules/bootstrap/dist/js")); // redirect bootstrap JS
 app.use("/js", express.static(__dirname + "/node_modules/jquery/dist")); // redirect JS jQuery
+app.use("/js", express.static(__dirname + "/node_modules/jspdf/dist")); // redirect jspdf jQuery
 app.use("/js", express.static(__dirname + "/node_modules/uikit/dist/js")); // redirect UIKIT JS
 app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css")); // redirect CSS bootstrap
 app.use("/fa",
