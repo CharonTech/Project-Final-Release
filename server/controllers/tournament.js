@@ -62,6 +62,7 @@ let displayCreatePage = (req, res) => {
                 moment: moment,
                 firstName: req.user ? req.user.firstName : "",
             });
+            
         }
     });
 };

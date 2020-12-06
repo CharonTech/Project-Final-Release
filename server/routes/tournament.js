@@ -13,6 +13,23 @@ function requireAuth(req, res, next)
     }
     next();
 }
+function verifyOwnership(req, res, next)
+{
+    let id = req.params.id;
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    Tournament.findById(id, (err, tournamentToEdit) => {
+        console.log('Owner ID -> ' + tournamentToEdit.owner._id);
+        console.log('User ID -> ' + req.user._id);
+        if(!tournamentToEdit.owner._id.equals(req.user._id))
+        {
+            return res.redirect('/tournaments');
+        }
+        next();
+    });
+}
 
 /* GET Tournament List page. READ Operation */
 router.get('/', requireAuth, tournamentController.displayTournaments);
@@ -43,11 +60,11 @@ router.post("/create", requireAuth, (req, res) => {
 });
 
 /* GET Route for displaying the Edit page*/
-router.get('/edit/:id', requireAuth, tournamentController.displayEditPage);
+router.get('/edit/:id', verifyOwnership, tournamentController.displayEditPage);
 
 /* POST Route for processing the Edit page - UPDATE Operation */
 
-router.post('/edit/:id', (req, res, next) => {
+router.post('/edit/:id', verifyOwnership, (req, res, next) => {
     const id = req.params.id
     const teams = req.body.participantNames.split('\n');
     tournamentController.updateTournament(id, {
@@ -69,7 +86,7 @@ router.post('/edit/:id', (req, res, next) => {
 });
 
 /* GET to perform  Deletion - DELETE Operation */
-router.get('/delete/:id', (req, res, next) => {
+router.get('/delete/:id', verifyOwnership, (req, res, next) => {
     let id = req.params.id;
     tournamentController.deleteTournament(id, err => {
         if (err) {
@@ -81,7 +98,7 @@ router.get('/delete/:id', (req, res, next) => {
     });
 });
 
-router.get('/view/:id', (req, res, next) => {
+router.get('/view/:id', verifyOwnership, (req, res, next) => {
     let id = req.params.id;
     tournamentController.getTournamentWithBrackets(id, (err, tournament) => {
         if (err)
@@ -107,7 +124,7 @@ router.get('/view/:id', (req, res, next) => {
 });
 
 // POST to change scores of a bracket associated with the tournament with the given id
-router.post('/view/:id', (req, res, next) => {
+router.post('/view/:id', verifyOwnership, (req, res, next) => {
     let tournamentId = req.params.id;
     bracketController.setScoresOfBracket(
         req.body['bracket-id'],
@@ -127,7 +144,7 @@ router.post('/view/:id', (req, res, next) => {
 });
 
 // POST to set the bracket as finished and decide the winner
-router.post('/bracket/finish/:id', (req, res, next) => {
+router.post('/bracket/finish/:id', verifyOwnership, (req, res, next) => {
     let tournamentId = req.params.id;
     bracketController.setWinnerOfBracket(req.body['bracket-finish-id'], (err, isFirstWon, parentBracket) => {
         if (err) {
