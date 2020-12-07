@@ -1,3 +1,16 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="js/custom.js"></script>
+<script >$(document).on('click','#savePDF',function(){
+    let pdf = new jsPDF();
+    let section=$('body');
+    let page= function() {
+        pdf.save('tournament.pdf');
+       
+    };
+    pdf.addHTML(section,page);
+    })</script>
 <% let finalBracket = tournament.finalBracket; %>
 <style>
   .tournament-container {
@@ -20,11 +33,17 @@
     <%- include('partials/bracket', { currentUser: currentUser, owner: tournament.owner, bracket: finalBracket, teams: tournament.teams }) %>
   </div>
 
-  <div class="mb-4 no-print">
+<!--<div class="mb-4 no-print">
     <button type="button" class="btn btn-info d-block mx-auto" onclick="window.print()">Save as PDF</button>
     <a href="https://restpack.io/html2pdf/save-as-pdf?private=true?pdf_orientation=landscape?pdf_page=Letter?url=http://localhost:3000/tournaments/view/<%= tournId %>" rel="nofollow" target="_blank">Download Invoce</a>
   </div>
+</div>-->
+
+  <div class="mb-4 no-print">
+    <button type="button" id="savePDF" class="btn btn-info d-block mx-auto">Save as PDF</button>
+  </div>
 </div>
+
 
 
 <!-- A modal (pop-up) for changing information on a bracket -->
@@ -62,12 +81,12 @@
   </div>
   <div class="push"></div>
 </div>
-<script async src="https://restpack.io/save-as-pdf.js"></script>
+<!--<script async src="https://restpack.io/save-as-pdf.js"></script>-->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
-<script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>-->
+<!--<script>
   const doc = new jsPDF();
 doc.text("Hello world!", 10, 10);
 doc.save("a4.pdf"); 
-</script>
+</script>-->
